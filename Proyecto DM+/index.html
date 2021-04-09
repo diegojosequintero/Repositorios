@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<!-- pruba push 2-->
+
+<html>
+
+<head>
+	<title>DMPLUS</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="estilos.css" media="screen" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body class="is-preload">
+	<script>
+		$(function () {
+			$("#btn_prediccion").click(function () {
+				var numeroEmbarazo = $("#number").val();
+				var presionArterial = $("#arterial").val();
+				var mmPiel = $("#piel").val();
+				var pesoP = $("#peso").val();
+				var alturaP = $("#altura").val();
+				var edadP = $("#edad").val();
+				var insulina = $("#insulina").val();
+				$.post("http://127.0.0.1:5000/pronostico/",
+					{
+						"nEmbarazo": numeroEmbarazo,
+						"pArterial": presionArterial,
+						"mmPiel": mmPiel,
+						"peso": pesoP,
+						"altura": alturaP,
+						"edad": edadP,
+						"insulina": insulina
+					},
+					function (data, status) {
+						document.getElementById("dato").innerHTML = data;
+					});
+			});
+		});
+	</script>
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="logo">
+				<img src="assets/css/DM+2.png"/>
+			</div>
+			<div class="content">
+				<div class="inner">
+					<h1>DMPLUS</h1>
+					<h3>Aplicación web para predecir el nivel de glucosa en sangre de pacientes embarazadas</h3>
+					<p><h9>¿Sabias que la diabetes gestacional es un tipo de diabetes tipo 2 que aparece por primera <br>vez durante el
+						embarazo en mujeres que nunca antes padecieron esta enfermedad?<br>
+						En genaral, aparece a mitad del embarazo y puede afactar a una paciente en más de un embarazo.<br>
+						¡Leer las instrucciones antes de rellenar el formulario!</h9> </p>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#intro">Instrucciones</a></li>
+					<li><a href="#work">Formulario</a></li>
+					<li><a href="#about">Información</a></li>
+					<li><a href="#contact">Contacto</a></li>
+					<!--<li><a href="#elements">Elements</a></li>-->
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Intro -->
+			<article id="intro">
+				<h2 class="major">Instrucciones</h2>
+				<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+				<p>
+				<h4>A continuación se presentara el siguente formulario para predecir el nivel de glucosa en sangre en
+					pacientes embarazadas, </h4>
+				<h4>para obtener resultados coherentes es necesario introducir los siguente datos como se indica a
+					continuación:</h4>
+				<p><h8>1) Número de embarazos:</h8>  Numero de veces que la paciente a estado embarazada. </p>
+				<p><h8>2) Presión arterial(mmHe):</h8>  La presión diastólica en sangre. </p>
+				<p><h8>3) Grosor de piel(mm):</h8>  Es el grosor de piel del triceps. </p>
+				<!-- <p>Insulina(muU/ml): </p>-->
+				<p><h8>4) Peso(kg):</h8>  Peso actual del paciente en ayunas. </p>
+				<p><h8>5) Altura(cm):</h8>  Altura actual del paciente. </p>
+				<!-- <p>Historial familiar de diabetes (%):</p> -->
+				<p><h8>6) Edad(años):</h8>  Edad actual del paciente.</p>
+				<p><h8>7) Insulina(μ U/ml):</h8>  Valor de insulina en sangre, lo podras obtener mediante un examen médico</p>
+				<div>
+					</p>
+			</article>
+
+			<!-- Work -->
+			<article id="work">
+				<h2 class="major">Formulario</h2>
+				<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+				<div>
+					<form action="" method="POST" id="datos_usuario">
+						<h3 id="formulario">FORMULARIO</h3>
+						<div class="linea">
+							<div class="cubo">
+								<label for="number">Numero de embarazos</label>
+								<input id="number" type="number" placeholder="" value="">
+							</div>
+							<div class="cubo">
+								<label for="arterial">Presion arterial (mmHg)</label>
+								<input id="arterial" type="number" placeholder="" value="">
+							</div>
+						</div>
+						<div class="linea">
+							<div class="cubo">
+								<label for="piel">Grosor de piel (mm)</label>
+								<input id="piel" type="number" value="">
+							</div>
+							<div class="cubo">
+								<label for="peso">Peso (Kg)</label>
+								<input id="peso" type="number" value="">
+							</div>
+						</div>
+						<div class="linea">
+							<div class="cubo">
+								<label for="altura">Altura (cm)</label>
+								<input id="altura" type="number" value="">
+							</div>
+							<div class="cubo">
+								<label for="edad">Edad (años)</label>
+								<input id="edad" type="number" value="">
+							</div>
+						</div> 
+						<div class="linea">
+							<div class="cubo">
+								<label for="insulina">Insulina</label>
+								<input id="insulina" type="number" value="">
+							</div>
+									<input type="button" value="Predicción" id="btn_prediccion" onclick="location.href='#prediccion';">
+									<!-- <li><a href="#prediccion">Predición</a></li> -->
+						</div>
+					</form>
+				</div>
+			</article>
+
+			<!-- About -->
+			<article id="about">
+				<h2 class="major">¿Quiénes somos?</h2>
+				<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+				<div>
+					
+				<p><h9>DM+ es una aplicación web que realiza una estimación del valor de glucosa en sangre de mujeres embarazadas. Con esta página Web buscamos informar 
+					a aquellas pacientes y al público en general sobre la diabetes gestiacional y cómo disminuir el riezgo de la misma. </h9></p>
+				<p><h8>-¿A quién va dirigido?</h8></p>
+				<p><h9>Este proyecto va dirigido especialmente a todas las mujeres que estén en periodo de embarazo y también a la población en general para 
+					generar concienza sobre el tema.
+				</h9></p>
+				<p><h8>Objetivos de Desarrollo Sostenible</h8></p>
+						<span class="image main"><img src="images/pic05.jpg" alt="" /></span>
+						<p><h9>El 25 de septiembre de 2015, los líderes mundiales adoptaron un conjunto de objetivos globales para erradicar la pobreza, 
+							proteger el planeta y asegurar la prosperidad para todos como parte de una nueva agenda de desarrollo sostenible. 
+							Cada objetivo tiene metas específicas que deben alcanzarse en los próximos 15 años.</h9></p>
+						<p><h9>Por ello, enfocamos nuestro proyecto a cumplir el 3º objetivo de los ODS, ya que busca el cuidado de las mujeres embarazadas</h9></p>
+
+			</article>
+
+			<!-- Resultado Predicción-->
+			<article id="prediccion">
+				<h2 class="major">Predicción</h2>
+				<span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+				<p>
+					Este es el resultado de nuestra predicción, haciendo referencia a la tabla, el valor que se predice se compara con la fila "Glucosa mg/dl". Como se puede observar los valores óptimos estan entre el 80 - 120.
+				</p>
+				<h7><div id="dato" class="prediccion"></div></h7>
+			</article>
+			
+			<!-- Contact -->
+			<article id="contact">
+				<h2 class="major">Contacto</h2>
+				<div class="container">
+					<!-- Diego -->
+					<div class="img-content">
+						<div class="img"></div>
+						<div class="info">
+							<h2>Diego Quintero</h2>
+							<h4>Back-End Developer</h4>
+						</div>
+						<div class="social">
+							<ul>
+								<li><a href="https://www.linkedin.com/in/diegojosequintero/"><i class="fab fa-linkedin"></i></a></li>
+								<li><a href="https://github.com/diegojosequintero"><i class="fab fa-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- MISAEL -->
+					<div class="img-content">
+						<div class="img1"></div>
+						<div class="info">
+							<h2>Misael Zamorano</h2>
+							<h4>Back-End Developer</h4>
+						</div>
+						<div class="social">
+							<ul>
+								<li><a href="https://www.linkedin.com/in/misael-zamorano-8206a9208/"><i class="fab fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fab fa-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div class="container">
+					
+					<!-- MOHAMED -->
+					<div class="img-content">
+						<div class="img2"></div>
+						<div class="info">
+							<h2>Mohamed Rifi</h2>
+							<h4>Front-End Developer</h4>
+						</div>
+						<div class="social">
+							<ul>
+								<li><a href="https://www.linkedin.com/in/rifimohamed"><i class="fab fa-linkedin"></i></a></li>
+								<li><a href="https://github.com/mrifi"><i class="fab fa-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Dylan -->
+					<div class="img-content">
+						<div class="img3"></div>
+						<div class="info">
+							<h2>Dylan Aragon</h2>
+							<h4>Front-End Developer</h4>
+						</div>
+						<div class="social">
+							<ul>
+								<li><a href="https://www.linkedin.com/in/dylan-aragon/"><i class="fab fa-linkedin"></i></a></li>
+								<li><a href="https://github.com/daragonb"><i class="fab fa-github"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+
+		
+		</article>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+	</footer>
+
+	</div>
+
+	<!-- BG -->
+	<div id="bg"></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
